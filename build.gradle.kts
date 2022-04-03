@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.jboss.weld.se:weld-se-shaded:3.1.5.SP1")
     testImplementation(kotlin("test"))
 }
 

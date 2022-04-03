@@ -1,10 +1,12 @@
 package work.qvortrup.declarations.application
 
-import work.qvortrup.declarations.domain.entity.Declaration
-import work.qvortrup.declarations.domain.entity.Product
+import org.jboss.weld.environment.se.Weld
 
 fun main(args: Array<String>) {
-    val app = AppCreator()
+    val weld = Weld()
+    val container = weld.initialize()
+
+    val app = container.select(AppCreator::class.java).get()
 
     app.receiver.run()
 }
