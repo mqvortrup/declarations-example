@@ -8,11 +8,14 @@ import work.qvortrup.declarations.domain.service.select.Selector
 import work.qvortrup.declarations.domain.service.storage.Storage
 import work.qvortrup.declarations.domain.service.validate.Validator
 import work.qvortrup.declarations.usecase.declare.Declarator
+import javax.enterprise.context.ApplicationScoped
+import javax.inject.Inject
 
 /**
  * The only responsibility of this class is to process the declaration according to the business rules
  */
-class DeclaratorImplementation(val enricher: Enricher, val validator: Validator, val selector: Selector, val calculator: Calculator, val receipts: Receipts, val storage: Storage): Declarator {
+@ApplicationScoped
+class DeclaratorImplementation @Inject constructor(val enricher: Enricher, val validator: Validator, val selector: Selector, val calculator: Calculator, val receipts: Receipts, val storage: Storage): Declarator {
     override fun processDeclaration(declaration: Declaration) {
         enricher.enrich(declaration)
         validator.validate(declaration)

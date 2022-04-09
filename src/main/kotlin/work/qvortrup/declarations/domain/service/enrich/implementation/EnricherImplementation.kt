@@ -4,8 +4,11 @@ import work.qvortrup.declarations.domain.entity.Declaration
 import work.qvortrup.declarations.domain.service.enrich.CustomerAccess
 import work.qvortrup.declarations.domain.service.enrich.Enricher
 import work.qvortrup.declarations.domain.service.enrich.TariffAccess
+import javax.enterprise.context.ApplicationScoped
+import javax.inject.Inject
 
-class EnricherImplementation(private val customerAccess: CustomerAccess, private val tariffAccess: TariffAccess) :
+@ApplicationScoped
+class EnricherImplementation @Inject constructor(private val customerAccess: CustomerAccess, private val tariffAccess: TariffAccess) :
     Enricher {
     override fun enrich(declaration: Declaration) {
         val customer = customerAccess.getCustomer(declaration.customerCode)

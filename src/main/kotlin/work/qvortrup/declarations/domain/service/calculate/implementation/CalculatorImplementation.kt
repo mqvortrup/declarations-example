@@ -4,7 +4,9 @@ import work.qvortrup.declarations.domain.entity.Declaration
 import work.qvortrup.declarations.domain.entity.Dues
 import work.qvortrup.declarations.domain.entity.Product
 import work.qvortrup.declarations.domain.service.calculate.Calculator
+import javax.enterprise.context.ApplicationScoped
 
+@ApplicationScoped
 class CalculatorImplementation : Calculator {
     override fun calculate(declaration: Declaration) {
         declaration.products.forEach { it.dues = calculateDues(it) }

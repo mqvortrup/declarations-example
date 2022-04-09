@@ -4,8 +4,11 @@ import work.qvortrup.declarations.domain.entity.Declaration
 import work.qvortrup.declarations.domain.service.storage.DeclarationAccess
 import work.qvortrup.declarations.domain.service.storage.ReceiptAccess
 import work.qvortrup.declarations.domain.service.storage.Storage
+import javax.enterprise.context.ApplicationScoped
+import javax.inject.Inject
 
-class StorageImplementation(val declarationAccess: DeclarationAccess, val receiptAccess: ReceiptAccess): Storage {
+@ApplicationScoped
+class StorageImplementation @Inject constructor(val declarationAccess: DeclarationAccess, val receiptAccess: ReceiptAccess): Storage {
     override fun store(declaration: Declaration) {
         declarationAccess.store(declaration)
         receiptAccess.store(declaration.customsReceipt!!)

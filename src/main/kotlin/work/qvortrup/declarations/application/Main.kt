@@ -7,6 +7,5 @@ fun main(args: Array<String>) {
     val container = weld.initialize()
 
     val app = container.select(AppCreator::class.java).get()
-
     app.receiver.run()
 }
